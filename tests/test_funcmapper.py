@@ -2,7 +2,10 @@
 import unittest
 
 import re
-from unittest.mock import MagicMock
+try:
+    from mock import MagicMock
+except ImportError:
+    from unittest.mock import MagicMock
 
 from funcmap.mapper import FuncMapper, NotSupportedError
 
