@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from funcmap.mapper import FuncMapper
+from funcmap import FuncMapper
 
 mapper = FuncMapper()  # initialise the funcmapper
 

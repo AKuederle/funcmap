@@ -8,7 +8,8 @@ try:
 except ImportError:
     from unittest.mock import MagicMock
 
-from funcmap.mapper import FuncMapper, NotSupportedError
+from funcmap import FuncMapper
+from funcmap.mapper import NotSupportedError
 
 
 class TestMapping(unittest.TestCase):
