@@ -1,6 +1,13 @@
 import re
 import traceback
 
+# Define some custom errors
+
+
+class NotSupportedError(Exception):
+    """Error indicating, that a certion functionality is not supported by the software."""
+    pass
+
 
 class FuncMapper:
     def __init__(self):
@@ -49,7 +56,10 @@ class FuncMapper:
 
         def wrapper(f):
             self._mapped_functions[regex] = f
-            self._mapped_regex[regex] = re.compile(regex)
+            compiled_regex = re.compile(regex)
+            if compiled_regex.groups > 0 and len(compiled_regex.groupindex) < compiled_regex.groups:
+                raise NotSupportedError("Only named matched groups are Supported!")
+            self._mapped_regex[regex] = compiled_regex
             return f
 
         return wrapper
@@ -67,8 +77,6 @@ class FuncMapper:
         for name, regex in self._mapped_regex.items():
             match = regex.fullmatch(string)
             if match:
-                if not match.groupdict() and match.groups():
-                    raise Exception("Only named matched groups are Supported!")
                 return self._mapped_functions[name], match.groupdict()
         return None, None
 
@@ -89,7 +97,7 @@ class FuncMapper:
         """
         f, kwargs = self._get_func_from_string(string)
         if not f:
-            raise Exception("This string maps to no function!")
+            raise KeyError("This string maps to no function!")
         return f(**kwargs)
 
     def start_input_loop(self, message=True, catch_exceptions=False):
