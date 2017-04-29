@@ -5,8 +5,8 @@ funcmap
     :target: https://pypi.python.org/pypi/funcmap
     :alt: Latest PyPI version
 
-.. image:: ''.png
-   :target: ''
+.. image:: https://img.shields.io/travis/AKuederle/funcmap.png
+   :target: 'https://travis-ci.org/AKuederle/funcmap'
    :alt: Latest Travis CI build status
 
 A minimal Python module to provide convenient mapping between Python functions and text input
@@ -25,6 +25,7 @@ Compatibility
 
 Licence
 -------
+This package is licenced under a MIT licence (Copyright (c) 2017 Arne Küderle)
 
 Authors
 -------
