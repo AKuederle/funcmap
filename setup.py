@@ -8,12 +8,14 @@ setuptools.setup(
     author="Arne Küderle",
     author_email="a.kuederle@gmail.com",
 
-    description="A minimal Python module to provide convenient mapping between Python functions and text input",
+    description="A small Python module to provide convenient mapping between Python functions and text input",
     long_description=open('README.rst').read(),
 
     packages=setuptools.find_packages(),
 
     test_suite='tests',
+
+    license='LICENSE.txt',
 
     install_requires=[],
 
