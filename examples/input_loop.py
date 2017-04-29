@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """A simple demonstration how to start the infinite input loop to test the function calls.
 
 It reuses all the functions from the example_functions.py file.

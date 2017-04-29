@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Base Tests for the FuncMapper Class"""
 import unittest
 
