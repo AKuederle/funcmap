@@ -4,7 +4,7 @@ import setuptools
 setuptools.setup(
     name="funcmap",
     version="1.0.1",
-    url="",
+    url="https://github.com/AKuederle/funcmap",
 
     author="Arne Küderle",
     author_email="a.kuederle@gmail.com",
