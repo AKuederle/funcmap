@@ -106,7 +106,7 @@ try my best to make it work for you!
 What is this RegEx you are talking about?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Regular Expressions (RegEx) are super cool language-processing-magic, if one understands them. I do... sometimes. If you want to
- master the RegEx `learn here <https://regexone.com/references/python>`_ and `test your skills here <https://regex101.com/>`_.
+master the RegEx `learn here <https://regexone.com/references/python>`_ and `test your skills here <https://regex101.com/>`_.
 
 
 Installation
