@@ -18,7 +18,7 @@ not URLs and with REGEX!
 
 .. _Flask: http://flask.pocoo.org/
 
-Here is how you use it:
+**Here is how you use it:**
 
 First you need to create an instance of the FuncMapper:
 
@@ -65,7 +65,7 @@ And no we have a function with some self esteem:
 
 .. code-block:: python
 
-    print(mapper('call my_func'))
+    >>> print(mapper('call my_func'))
     'I, my_func, have been called'
 
 A silly calculator:
@@ -86,6 +86,8 @@ And this schizophrenic guy:
     >>> print('No, I am Joe')
     'I have multiple names!'
 
+For more guidance check the examples folder and the method docstrings.
+
 Why the heck do I need that?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Because it uses some awesome Python stuff, of course! - But seriously, the idea is to use it as tiny helper-framework
@@ -94,6 +96,17 @@ when some simple language logic is needed. A prime example would be something li
 I developed this little thing, because I am planning on building like a very dumb language-shortcut engine to make some
 simple tasks voice or SMS/Message controllable. I currently don't have time for that, but I wanted to start somewhere.
 If you have the time, STEAL MY IDEA, MAKE IT, SHARE IT, AND BE AWESOME!
+
+Can it do ...?
+^^^^^^^^^^^^^^
+Probably not... yet! Currently I only implemented the bare minimum I needed. If I will do more work with this library I
+will very likely find more stuff I need. Till then, it is your turn! If you are missing a feature let me know! I will
+try my best to make it work for you!
+
+What is this RegEx you are talking about?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Regular Expressions (RegEx) are super cool language-processing-magic, if one understands them. I do... sometimes. If you want to
+ master the RegEx `learn here <https://regexone.com/references/python>`_ and `test your skills here <https://regex101.com/>`_.
 
 
 Installation
