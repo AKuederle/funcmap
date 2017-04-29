@@ -1,4 +1,4 @@
-from funcmap.funcmap.mapper import FuncMapper
+from funcmap.mapper import FuncMapper
 
 mapper = FuncMapper()  # initialise the funcmapper
 

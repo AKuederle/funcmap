@@ -13,6 +13,8 @@ setuptools.setup(
 
     packages=setuptools.find_packages(),
 
+    test_suite='tests',
+
     install_requires=[],
 
     classifiers=[
