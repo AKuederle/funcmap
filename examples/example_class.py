@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""When using funcmapper with instance methods, you can ot use the decorator syntax.
+Instead you need to perform the mapping after the instance is created.
+The best place to do this is the init method of your class.
+This ensures, that each instance has its own funcmap and the self context is available inside the methods.
+"""
 from funcmap import FuncMapper
 
 
