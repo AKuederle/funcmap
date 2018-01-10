@@ -30,6 +30,8 @@ First you need to create an instance of the FuncMapper:
 
 And now you map, map, map:
 
+There are two ways supported to map a regex to a function.
+First using the map decorator:
 .. code-block:: python
 
     @mapper.map(r'call my_func')
@@ -50,6 +52,29 @@ And now you map, map, map:
         Unnamed capture groups as positional arguments are NOT supported to avoid some edge-cases!
         """
         return '{} + {} = {}'.format(first, second, int(first) + int(second))
+
+... and second using map as a function:
+.. code-block:: python
+
+    def my_func():
+        """We can map simple functions.
+
+        Just pass a phrase to the map decorator.
+        """
+        return 'I, my_func, have been called'
+
+
+    def adder(first, second):
+        """We can map functions with arguments.
+
+        All named capture groups (this is a capture group named first: (?P<first>\d+)) are passed as keyword-arguments to
+        function. So make sure the names of your capture groups fit the names of your function arguments.
+        Unnamed capture groups as positional arguments are NOT supported to avoid some edge-cases!
+        """
+        return '{} + {} = {}'.format(first, second, int(first) + int(second))
+
+    mapper.map(r'call my_func', my_func)
+    mapper.map(r'(?P<first>\d+)\+(?P<second>\d+)', adder)
 
 Not enough mapping? - Than map some more! Double-Map-Time!
 
