@@ -30,6 +30,7 @@ def multi_name():
     """We can map multiple Regex-expressions to the same function."""
     return 'I have multiple names!'
 
+
 if __name__ == '__main__':
     # get the function output by calling the mapper
     print(mapper('call my_func'))
