@@ -35,3 +35,6 @@ setuptools
 .mr.developer.cfg
 .project
 .pydevproject
+
+# PyCharm
+.idea
