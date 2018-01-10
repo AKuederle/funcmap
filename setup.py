@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="funcmap",
-    version="1.0.1",
+    version="1.0.2",
     url="https://github.com/AKuederle/funcmap",
 
     author="Arne Küderle",
@@ -21,7 +21,6 @@ setuptools.setup(
     install_requires=[],
 
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
