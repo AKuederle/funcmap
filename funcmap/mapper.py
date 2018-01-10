@@ -17,8 +17,8 @@ class FuncMapper:
     def __call__(self, *args, **kwargs):
         return self.call_function_with_string(*args, **kwargs)
 
-    def map(self, regex):
-        """Decorate a function to map it to a regex expression.
+    def map(self, regex, func=None):
+        r"""Decorate a function to map it to a regex expression.
 
         Decorator that allows to map a Python function to a regex expression provided as argument. The regex expression
         is parsed using the 're' module (https://docs.python.org/3/library/re.html). Therefore, all regex syntax that
@@ -61,8 +61,11 @@ class FuncMapper:
                 raise NotSupportedError("Only named matched groups are Supported!")
             self._mapped_regex[regex] = compiled_regex
             return f
-
-        return wrapper
+        
+        if func:
+            wrapper(func)
+        else:
+            return wrapper
 
     def _get_func_from_string(self, string):
         """Return the function matched to a regex.
