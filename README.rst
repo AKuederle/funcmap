@@ -32,6 +32,7 @@ And now you map, map, map:
 
 There are two ways supported to map a regex to a function.
 First using the map decorator:
+
 .. code-block:: python
 
     @mapper.map(r'call my_func')
@@ -54,6 +55,7 @@ First using the map decorator:
         return '{} + {} = {}'.format(first, second, int(first) + int(second))
 
 ... and second using map as a function:
+
 .. code-block:: python
 
     def my_func():
