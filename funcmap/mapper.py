@@ -29,9 +29,11 @@ class FuncMapper:
 
         Args:
             regex: An Python raw string (r'I am a raw string') that can be interpreted as regular expression
+            func (optional): A Python callable. If provided the function will be directly mapped to the regex and no decorator returned
 
         Returns:
-            func: The input function without modfication
+            function_decorator: The input function without modification (when func=None)
+            None: when func is specified as input argument
 
         Example:
             The simplest case just maps a function to a name:
@@ -50,6 +52,15 @@ class FuncMapper:
                 >>> @mapper.map(r'(?P<first>\d+)\+(?P<second>\d+)')
                 ... def adder(first, second):
                 ...    return '{} + {} = {}'.format(first, second, int(first) + int(second))
+                >>> mapper('3+5')
+                '3 + 5 = 8'
+
+            The same functionality is also provided without decorators:
+
+                >>> mapper = FuncMapper()
+                >>> def adder(first, second):
+                ...    return '{} + {} = {}'.format(first, second, int(first) + int(second))
+                >>> mapper.map(r'(?P<first>\d+)\+(?P<second>\d+)', adder)
                 >>> mapper('3+5')
                 '3 + 5 = 8'
         """
