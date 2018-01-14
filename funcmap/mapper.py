@@ -113,7 +113,8 @@ class FuncMapper:
         """
         f, parsed_kwargs = self._get_func_from_string(string)
         if parsed_kwargs:
-            kwargs = parsed_kwargs.update(kwargs)
+            parsed_kwargs.update(kwargs)
+            kwargs = parsed_kwargs
         if not f:
             raise KeyError("This string maps to no function!")
         return f(*args, **kwargs)
