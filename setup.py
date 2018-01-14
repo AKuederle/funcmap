@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="funcmap",
-    version="1.0.2",
+    version="1.0.3",
     url="https://github.com/AKuederle/funcmap",
 
     author="Arne Küderle",
