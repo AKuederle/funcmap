@@ -112,7 +112,8 @@ class FuncMapper:
             The return value of the called function
         """
         f, parsed_kwargs = self._get_func_from_string(string)
-        kwargs = {**parsed_kwargs, **kwargs}
+        if parsed_kwargs:
+            kwargs = {**parsed_kwargs, **kwargs}
         if not f:
             raise KeyError("This string maps to no function!")
         return f(*args, **kwargs)
