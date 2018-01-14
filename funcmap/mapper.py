@@ -14,8 +14,8 @@ class FuncMapper:
         self._mapped_functions = {}
         self._mapped_regex = {}
 
-    def __call__(self, *args, **kwargs):
-        return self.call_function_with_string(*args, **kwargs)
+    def __call__(self, string, *args, **kwargs):
+        return self.call_function_with_string(string, *args, **kwargs)
 
     def map(self, regex, func=None):
         r"""Decorate a function to map it to a regex expression.
@@ -94,12 +94,14 @@ class FuncMapper:
                 return self._mapped_functions[name], match.groupdict()
         return None, None
 
-    def call_function_with_string(self, string):
+    def call_function_with_string(self, string, *args, **kwargs):
         """Call a mapped function based on an input string that is parsed by regex.
 
         The first function mapped to the first regex that matches the string is returned. Because dictionaries are used
         to store the regex-expressions, the output is not deterministic, if multiple regex match the string! Please
         ensure, that your regex expressions are unique. (This might change in the future)
+        Args and kwargs will passed into the matched function.
+        The passed kwargs overwrite the kwargs extracted from the input string.
 
         TODO: Handel multiple regex matching
 
@@ -109,10 +111,11 @@ class FuncMapper:
         Returns:
             The return value of the called function
         """
-        f, kwargs = self._get_func_from_string(string)
+        f, parsed_kwargs = self._get_func_from_string(string)
+        kwargs = {**parsed_kwargs, **kwargs}
         if not f:
             raise KeyError("This string maps to no function!")
-        return f(**kwargs)
+        return f(*args, **kwargs)
 
     def start_input_loop(self, message=True, catch_exceptions=False):
         """Start a simple infinite input loop, which can be used to test the mappings.

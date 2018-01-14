@@ -117,3 +117,36 @@ class TestRetrieve(unittest.TestCase):
         """Test that an exception is raised if no match is found."""
         with self.assertRaises(KeyError):
             self.mapper('test1')
+
+
+class TestAdditionalArguments(unittest.TestCase):
+    """Test to call the functions with additional arguments"""
+
+    def setUp(self):
+        """Set up."""
+        self.mapper = FuncMapper()
+
+    def test_additional_args_no_string_kwargs(self):
+        simple_test_func = MagicMock(return_value='simple_test_func1 called')
+        args = ['test_arg_1', 'test_arg_2']
+        kwargs = dict(test_kwarg_1='test_kwarg_1', test_kwarg_2='test_kwarg_2')
+        self.mapper.map('test')(simple_test_func)
+        self.mapper('test', *args, **kwargs)
+        simple_test_func.assert_called_once_with(*args, **kwargs)
+
+    def test_additional_args_with_string_kwargs(self):
+        simple_test_func = MagicMock(return_value='simple_test_func1 called')
+        args = ['test_arg_1', 'test_arg_2']
+        kwargs = dict(test_kwarg_1='test_kwarg_1', test_kwarg_2='test_kwarg_2')
+        self.mapper.map(r'test (?P<string_kwarg_1>.+) (?P<string_kwarg_2>.+)')(simple_test_func)
+        self.mapper('test string_kwarg_1 string_kwarg_2', *args, **kwargs)
+        simple_test_func.assert_called_once_with(*args, string_kwarg_1='string_kwarg_1',
+                                                 string_kwarg_2='string_kwarg_2', **kwargs)
+
+    def test_additional_kwargs_overwrite_string_kwargs(self):
+        simple_test_func = MagicMock(return_value='simple_test_func1 called')
+        args = ['test_arg_1', 'test_arg_2']
+        kwargs = dict(test_kwarg_1='test_kwarg_1', overwrite_kwarg='test_kwarg_2')
+        self.mapper.map(r'test (?P<string_kwarg_1>.+) (?P<overwrite_kwarg>.+)')(simple_test_func)
+        self.mapper('test string_kwarg_1 string_kwarg_2', *args, **kwargs)
+        simple_test_func.assert_called_once_with(*args, string_kwarg_1='string_kwarg_1', **kwargs)
