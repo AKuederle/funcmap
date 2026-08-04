@@ -89,7 +89,7 @@ class FuncMapper:
             dict: The dictionary of named capture groups of the regex
         """
         for name, regex in self._mapped_regex.items():
-            match = regex.fullmatch(string)
+            match = regex.match(string)
             if match:
                 return self._mapped_functions[name], match.groupdict()
         return None, None
